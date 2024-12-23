@@ -1,0 +1,30 @@
+.teachers-table {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.teachers-table td {
+    text-align: center;
+}
+
+
+.teachers-table table {
+    width: 90%;
+    border-collapse: collapse;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.teachers-table table thead {
+    background-color: #F3EFFF;
+    height: 30px;
+    text-align: center;
+}
+
+.teachers-table table thead tr {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
