@@ -1,6 +1,27 @@
+import { useState, useEffect } from 'react'
 import './teachers.css'
 
 const Teachers = () => {
+    const [teachers, setTeachers] = useState([])
+    const [loading, setLoading] = useState(true);
+
+
+    useEffect(() => {
+        const fetchTeachersApi = async () => {
+            try {
+                const res = await fetch('http://localhost:8080/api/v1/teachers')
+                const data = await res.json()
+                setTeachers(data.data.listTeachers)
+            } catch (error) {
+                console.log("fetch data fail")
+            }finally{
+            setLoading(false)
+        }
+    }
+    fetchTeachersApi()
+    },[])
+
+    console.log(teachers)
     return(
         <div className='teachers-table'>
             <table>
@@ -17,16 +38,23 @@ const Teachers = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                    </tr>
+                    {teachers.map((teacher) => (
+                        <tr>
+                            <td>{teacher.code}</td>
+                            <td>...</td>
+                            <td>
+                                <p>Bậc: {teacher.degrees[0].type}</p>
+                                <p>Chuyên ngành: {teacher.degrees[0].major}</p>
+                            </td>
+                            <td>N/A</td>
+                            <td>{teacher.teacherPositionsId}</td>
+                            <td>{teacher.code}</td>
+                            <td>{teacher.code}</td>
+                            <td>{teacher.code}</td>
+                            <td>{teacher.code}</td>
+                            <td>{teacher.code}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

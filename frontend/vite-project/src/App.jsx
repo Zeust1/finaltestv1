@@ -5,7 +5,6 @@ import Teachers from './Components/teachers/teachers.jsx'
 import Position from './Components/position/position.jsx'
 
 function App() {
-
   return (
     <>
       <div className='header'>
